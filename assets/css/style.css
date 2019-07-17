@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#cat_pic {
+    height: 250px;
+    width: 300px;
+}
+
+#cat_map {
+    height:300px;
+    width: 500px;
+}
+
+.container {
+    max-width: 100%;
+}
+
+.form-group {
+    display: inline-flex;
+}
+
+.col-sm-8 {
+    text-align: left;
+}
