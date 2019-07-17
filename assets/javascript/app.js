@@ -41,16 +41,44 @@ function search() {
 
 function getGames(a) {
     var id = a;
-    var gamesURL = "https://www.balldontlie.io/api/v1/games?seasons[]=2018&team_ids[]=" + id + "&per_page=100";
+    console.log(id);
+    var gamesURL = "https://www.balldontlie.io/api/v1/games?seasons[]=2018&per_page=100&team_ids[]=" + id;
     $.ajax({
         url: gamesURL,
         method: "GET"
     })
     .then(function(response) {
-        console.log(response[82].home_team.full_name);
-        //console.log(response.data[82].home_team_score);
-        //console.log(response.data[82].visitor_team.full_name);
-        //console.log(response.data[82].visitor_team_score);
+        $("#games").html("");
+        
+        for (var i = 81; i > 71; i--) {
+            var aDiv = $("<div>").append(
+                $("<p>").text("Home"),
+                $("<p>").text(response.data[i].home_team.full_name),
+                $("<p>").text(response.data[i].home_team_score)
+            );
+
+            var bDiv = $("<div>").append(
+                $("<p>").text("Visitor"),
+                $("<p>").text(response.data[i].visitor_team.full_name),
+                $("<p>").text(response.data[i].visitor_team_score)
+            );
+
+            if (response.data[i].home_team_score > response.data[i].visitor_team_score) {
+                aDiv.css("font-weight", "bold");
+            } else {
+                bDiv.css("font-weight", "bold");
+            }
+
+            var date = response.data[i].date;
+            date = date.substring(0 , 10);
+            var cDiv = $("<div>").append(
+                $("<p>").text(date),
+                aDiv,
+                bDiv
+            );
+            $("#games").append(cDiv);
+            $("#games").css("display", "inline-flex");
+        }
     });
 };
 
@@ -146,10 +174,6 @@ function getWeather(city) {
         }
     }); 
 }
-
-
-
-
 
 $(document).on("click", "#submit", search);
 });
