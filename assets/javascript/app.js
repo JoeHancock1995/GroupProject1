@@ -1,4 +1,5 @@
 $(document).ready(function() {
+$('select').formSelect();
 
 function search() {
     event.preventDefault();
@@ -104,17 +105,21 @@ function getPlayer(a) {
             console.log(pFirst + " " + pLast);
 
             var newRow = $("<div>");
-            var p = $("<p>").text(first + " " + last);
+            var p = $("<span>").text(first + " " + last);
+            $(p).attr("id", "playerName");
             var pic = $("<img>");
             $(pic).attr("src", "https://nba-players.herokuapp.com/players/" + pLast + "/" + pFirst);
+            $(pic).attr("id", "playerPic");
 
             $(newRow).append(pic);
             $(newRow).append(p);
             $(newRow).attr("id", "player");
             $(newRow).css("float", "left");
             $(newRow).css("margin", "0 20px 20px 0");
+            $(newRow).attr("class", "carousel-item");
 
-            $("#players").append(newRow);         
+            $("#players").append(newRow); 
+            $('.carousel').carousel();      
         }
     });
 };

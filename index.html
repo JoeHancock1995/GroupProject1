@@ -6,88 +6,72 @@
     <meta name="viewport" contect="width=device-width, initial-scale=1">
     <title>Sports Dashboard</title>
 
-    <!--BootStrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+    <!--Materialize-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-
     <div class="header">
-        <h1>Sports</h1>
-        <h2>Basketball Team</h2>
+        <h1>Basketball Dashboard</h1>
     </div>
-    <div>
-        <div class="panel-heading">
-                <h3 class="panel-title"><strong>Choose a Team</strong></h3>
-        </div>
-
-        <div class="panel-body">
-            <form role="form">
-                <div class="form-group">
-                    <label for="search">NBA Teams</label>
-                    <select name="city" id="city-input">
-                        <option value="Atlanta">Atlanta Hawks</option>
-                        <option value="Boston">Boston Celtics</option>
-                        <option value="Brooklyn">Brooklyn Nets</option>
-                        <option value="Charlotte">Charlotte Hornets</option>
-                        <option value="Chicago">Chicago Bulls</option>
-                        <option value="Cleveland">Cleveland Cavaliers</option>
-                        <option value="Dallas">Dallas Mavericks</option>
-                        <option value="Denver">Denver Nuggets</option>
-                        <option value="Detroit">Detroit Pistons</option>
-                        <option value="Golden State">Golden State Warriors</option>
-                        <option value="Houston">Houston Rockets</option>
-                        <option value="Indiana">Indiana Pacers</option>
-                        <option value="LA">LA Clippers</option>
-                        <option value="Los Angeles">Los Angeles Lakers</option>
-                        <option value="Memphis">Memphis Grizzlies</option>
-                        <option value="Miami">Miami Heat</option>
-                        <option value="Milwaukee">Milwaukee Bucks</option>
-                        <option value="Minnesota">Minnesota Timberwolves</option>
-                        <option value="New Orleans">New Orleans Pelicans</option>
-                        <option value="New York">New York Knicks</option>
-                        <option value="Oklahoma City">Oklahoma City Thunder</option>
-                        <option value="Orlando">Orlando Magic</option>
-                        <option value="Philadelphia">Philadelphia 76ers</option>
-                        <option value="Phoenix">Phoenix Suns</option>
-                        <option value="Portland">Portland Trail Blazers</option>
-                        <option value="Sacramento">Sacramento Kings</option>
-                        <option value="San Antonio">San Antonio Spurs</option>
-                        <option value="Toronto">Toronto Raptors</option>
-                        <option value="Utah">Utah Jazz</option>
-                        <option value="Washington">Washington Wizards</option>
-                    </select>
-                    <button type="submit" class="btn btn-info" id="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+    <div class="input-field col s12" id="form">
+        <select name="city" id="city-input">
+            <option value="" disabled selected> Choose a Team</option>
+            <option value="Atlanta">Atlanta Hawks</option>
+            <option value="Boston">Boston Celtics</option>
+            <option value="Brooklyn">Brooklyn Nets</option>
+            <option value="Charlotte">Charlotte Hornets</option>
+            <option value="Chicago">Chicago Bulls</option>
+            <option value="Cleveland">Cleveland Cavaliers</option>
+            <option value="Dallas">Dallas Mavericks</option>
+            <option value="Denver">Denver Nuggets</option>
+            <option value="Detroit">Detroit Pistons</option>
+            <option value="Golden State">Golden State Warriors</option>
+            <option value="Houston">Houston Rockets</option>
+            <option value="Indiana">Indiana Pacers</option>
+            <option value="LA">LA Clippers</option>
+            <option value="Los Angeles">Los Angeles Lakers</option>
+            <option value="Memphis">Memphis Grizzlies</option>
+            <option value="Miami">Miami Heat</option>
+            <option value="Milwaukee">Milwaukee Bucks</option>
+            <option value="Minnesota">Minnesota Timberwolves</option>
+            <option value="New Orleans">New Orleans Pelicans</option>
+            <option value="New York">New York Knicks</option>
+            <option value="Oklahoma City">Oklahoma City Thunder</option>
+            <option value="Orlando">Orlando Magic</option>
+            <option value="Philadelphia">Philadelphia 76ers</option>
+            <option value="Phoenix">Phoenix Suns</option>
+            <option value="Portland">Portland Trail Blazers</option>
+            <option value="Sacramento">Sacramento Kings</option>
+            <option value="San Antonio">San Antonio Spurs</option>
+            <option value="Toronto">Toronto Raptors</option>
+            <option value="Utah">Utah Jazz</option>
+            <option value="Washington">Washington Wizards</option>
+        </select>
+        <button type="submit" class="btn btn-info" id="submit">Submit</button>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div id="teamName"></div>
-                <div id="teamCity"></div>
-                <div id="teamAbbr"></div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <div id="teamName"></div>
+            <div id="teamCity"></div>
+            <div id="teamAbbr"></div>
 
-                <div id="weather-API"></div>
-            </div>
+            <div id="weather-API"></div>
+        </div>
 
-            <div class="col-sm-8">
-                <div id="games"></div>
-                <br>
-                <div id="players"></div>
-            </div>
+        <div class="col s12 m8 l9">
+            <div id="games"></div>
+            <br>
+            <div class="carousel" id="players"></div>
         </div>
     </div>
- 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 

@@ -7,20 +7,38 @@ body {
     background-position-x: center;
     background-repeat: no-repeat;
     position: relative;
+    background-attachment: fixed;
 }
 
 .header {
     background-color: black;
     color: white;
     margin-bottom: 20px;
+    background: linear-gradient(red, black);
 }
 
-.container {
-    max-width: 100%;
-}
-
-.form-group {
+#form {
     display: inline-flex;
+    text-shadow: none;
+}
+
+[class="select-dropdown dropdown-trigger"] {
+    padding: 0 0 0 20px;
+}
+
+.select-wrapper {
+    background-color: white;
+}
+
+#player {
+    width: 350px;
+}
+
+#playerName {
+    background-color: black;
+    margin: -5px 0 0 0;
+    font-size: 24px;
+    padding: 10px;
 }
 
 label, button {
