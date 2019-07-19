@@ -1,21 +1,18 @@
 body {
     text-align: center;
+    background-color: black;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    background-image: url("../images/nba.jpg");
+    background-position-x: center;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 .header {
     background-color: black;
     color: white;
     margin-bottom: 20px;
-}
-
-#cat_pic {
-    height: 250px;
-    width: 300px;
-}
-
-#cat_map {
-    height:300px;
-    width: 500px;
 }
 
 .container {
@@ -26,6 +23,30 @@ body {
     display: inline-flex;
 }
 
-.col-sm-8 {
-    text-align: left;
+label, button {
+    margin: 0 20px;
+}
+
+#weatherDiv {
+    background-color: black;
+    font-size: 16px;
+    border: white solid 2px;
+    margin: auto;
+    width: 250px;
+    margin: auto;
+}
+
+#gDiv {
+    background-color: black;
+    font-size: 16px;
+    border: white solid 2px;
+    width: 150px;
+    float: left;
+}
+
+#games {
+    overflow: auto;
+    white-space: nowrap;
+    display: inline-flex;
+    width: 85%;
 }

@@ -24,18 +24,17 @@ function search() {
         var id = response.data[j].id;
         console.log(id);
         var logo = $("<img>");
-        
         $("#teamName").html("<div>" + response.data[j].full_name + "</div>");
-        $(logo).attr("src", "assets/images/" + response.data[j].city + ".jpg");
-        $(logo).css("height", "300px");
-        $(logo).css("width", "400px");
+        $(logo).attr("src", "assets/images/" + response.data[j].abbreviation + ".jpg");
+        $(logo).css("height", "200px");
+        $(logo).css("width", "250px");
         $("#teamName").append(logo);
         $("#teamCity").html("<div>" + response.data[j].city + "</div>");
         $("#teamAbbr").html("<div>" + response.data[j].abbreviation + "</div>");
 
         getGames(id);
-        //getPlayer(response.data[j].abbreviation);
-        //getWeather(city);
+        getPlayer(response.data[j].abbreviation);
+        getWeather(city);
     });
 };
 
@@ -52,21 +51,21 @@ function getGames(a) {
         
         for (var i = 81; i > 71; i--) {
             var aDiv = $("<div>").append(
-                $("<p>").text("Home"),
-                $("<p>").text(response.data[i].home_team.full_name),
+                $("<p>").text("Home: " + response.data[i].home_team.full_name),
                 $("<p>").text(response.data[i].home_team_score)
             );
 
             var bDiv = $("<div>").append(
-                $("<p>").text("Visitor"),
-                $("<p>").text(response.data[i].visitor_team.full_name),
+                $("<p>").text("Visitor: " + response.data[i].visitor_team.full_name),
                 $("<p>").text(response.data[i].visitor_team_score)
             );
 
             if (response.data[i].home_team_score > response.data[i].visitor_team_score) {
                 aDiv.css("font-weight", "bold");
+                aDiv.css("color", "red");
             } else {
                 bDiv.css("font-weight", "bold");
+                bDiv.css("color", "red");
             }
 
             var date = response.data[i].date;
@@ -76,8 +75,9 @@ function getGames(a) {
                 aDiv,
                 bDiv
             );
+
+            cDiv.attr("id", "gDiv");
             $("#games").append(cDiv);
-            $("#games").css("display", "inline-flex");
         }
     });
 };
@@ -103,13 +103,18 @@ function getPlayer(a) {
             var pLast = onlyLetters(last);
             console.log(pFirst + " " + pLast);
 
+            var newRow = $("<div>");
             var p = $("<p>").text(first + " " + last);
             var pic = $("<img>");
             $(pic).attr("src", "https://nba-players.herokuapp.com/players/" + pLast + "/" + pFirst);
 
-            $("#players").append(p);
-            $("#players").append(pic);
-            
+            $(newRow).append(pic);
+            $(newRow).append(p);
+            $(newRow).attr("id", "player");
+            $(newRow).css("float", "left");
+            $(newRow).css("margin", "0 20px 20px 0");
+
+            $("#players").append(newRow);         
         }
     });
 };
@@ -119,7 +124,7 @@ function onlyLetters(b) {
     var c = [];
     
     for (var i = 0; i < a.length; i++) {
-        if (a.charCodeAt(i) >= 97 && a.charCodeAt(i) <= 122) {
+        if ((a.charCodeAt(i) >= 97 && a.charCodeAt(i) <= 122) || (a.charCodeAt(i) == 45)) {
             c[i] = a[i]; 
         }
     }
@@ -168,7 +173,26 @@ function getWeather(city) {
                 $("<p>").text(response.list[i].weather[0].main),
                 $("<p>").text(response.list[i].weather[0].description)
             );
-            $("#weather-API").css("display", "inline-flex");
+
+            $(newRow).attr("id", "weatherDiv");
+            var pic = $("<img>");
+            var test = response.list[i].weather[0].main;
+            
+            var test = test.toLowerCase(); 
+            if (test == "clear") {
+                $(pic).attr("src", "assets/images/wclear.jpg");
+            } else if (test == "clouds") {
+                $(pic).attr("src", "assets/images/wclouds.jpg");
+            } else if (test == "partly cloudy") {
+                $(pic).attr("src", "assets/images/wpartlycloudy.jpg");
+            } else if (test == "rain") {
+                $(pic).attr("src", "assets/images/wrain.jpg");
+            } else if (test == "storms") {
+                $(pic).attr("src", "assets/images/wstorms.jpg");
+            } 
+            $(newRow).append(pic);
+
+            
             $("#weather-API").append(newRow);
             console.log(response.list[i].main.temp);
         }
