@@ -13,17 +13,25 @@ body {
 .header {
     background-color: black;
     color: white;
-    margin-bottom: 20px;
+    margin: -40px 0 20px 0;
     background: linear-gradient(red, black);
+}
+
+#teamName {
+    font-family: "helvetica";
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#teamCity {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #form {
     display: inline-flex;
     text-shadow: none;
-}
-
-[class="select-dropdown dropdown-trigger"] {
-    padding: 0 0 0 20px;
 }
 
 .select-wrapper {
@@ -45,13 +53,16 @@ label, button {
     margin: 0 20px;
 }
 
-#weatherDiv {
+.collapsible-header {
+    text-shadow: none;
+    background-color: white;
+    color: black;
+}
+
+.collapsible-body {
+    text-shadow: none;
     background-color: black;
-    font-size: 16px;
-    border: white solid 2px;
-    margin: auto;
-    width: 250px;
-    margin: auto;
+    color: white;
 }
 
 #gDiv {
