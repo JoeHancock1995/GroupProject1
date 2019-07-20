@@ -7,11 +7,16 @@
     <title>Sports Dashboard</title>
 
     <!--Materialize-->
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Moment.js Reference -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
@@ -60,9 +65,10 @@
         <div class="col s12 m4 l3">
             <div id="teamName"></div>
             <div id="teamCity"></div>
-            <div id="teamAbbr"></div>
 
-            <div id="weather-API"></div>
+            <div>
+                <ul class="collapsible popout" id="weather-API"></ul>
+            </div>
         </div>
 
         <div class="col s12 m8 l9">
