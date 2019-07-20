@@ -1,8 +1,10 @@
 $(document).ready(function() {
 $('select').formSelect();
+var sound = new Audio();
 
 function search() {
     event.preventDefault();
+    sound.pause();  
     city = $("#city-input").val();
 
     var sportURL = "https://www.balldontlie.io/api/v1/teams";
@@ -208,6 +210,107 @@ function getWeather(city) {
         }
     }); 
 }
+
+function spaceJam() {
+    event.preventDefault();
+    //Music
+    sound.src = "assets/images/spaceJam/spacejam.aac";
+    sound.currentTime = 0;  
+    sound.play();
+
+    //Team
+    var logo = $("<img>");
+    $("#teamName").html("<div>" + "Tune Squad" + "</div>");
+    $(logo).attr("src", "assets/images/spaceJam/spacejam.png");
+    $(logo).css("height", "200px");
+    $(logo).css("width", "250px");
+    $("#teamName").append(logo);
+    $("#teamCity").html("<div>" + "Tune Town" + "</div>");
+
+    //Weather
+    $("#weather-API").html("");
+    var longD = moment().format('dddd');
+    var date = moment().format("MMM Do YY");
+
+    var newRow = $("<li>");
+    var cHead = $("<div>");
+    $(cHead).attr("class", "collapsible-header");
+    $(cHead).html("<i class='material-icons'>" + "filter_drama" + "</i>" + longD + ", " + date);
+
+    var pic = $("<img>");
+    $(pic).attr("src", "assets/images/wclear.jpg");
+                
+    var cBody = $("<div>");
+    $(cBody).attr("class", "collapsible-body");
+    $(cBody).append(
+        $("<p>").text("Perfect Temperature"),
+        $("<p>").text("Perfect Weather"),
+        $("<p>").text("Clear Skies")
+    )
+    $(cBody).append(pic);
+    $(newRow).append(cHead);
+    $(newRow).append(cBody);
+            
+    $("#weather-API").append(newRow);
+    $('.collapsible').collapsible();
+    
+    //Games
+    $("#games").html("");
+    var aDiv = $("<div>").append(
+        $("<p>").text("Home: " + "Tune Squad"),
+        $("<p>").text("78")
+    );
+
+    var bDiv = $("<div>").append(
+        $("<p>").text("Visitor: MONSTARS"),
+        $("<p>").text("77")
+    );
+
+    aDiv.css("font-weight", "bold");
+    aDiv.css("color", "red");
+    
+
+    var date = "November 15, 1996";
+    var cDiv = $("<div>").append(
+        $("<p>").text(date),
+        aDiv,
+        bDiv
+    );
+
+    cDiv.attr("id", "gDiv");
+    $("#games").append(cDiv);
+
+    //Players
+    $("#players").html("");
+    var name = ["Michael Jordan", "Bugs Bunny", "Lola Bunny", "Daffy Duck",
+    "Tasmanian Devil", "Tweety", "Foghorn", "Porky Pig", "Yosemite Sam",
+    "Sylvester", "Pepé Le Pew", "Emma Webster", "Wayne Knight",
+    "Bill Murray", "Elmer Fudd"];
+
+    for (var i = 0; i < name.length; i++) {
+        var newRow = $("<div>");
+        var p = $("<span>").text(name[i]);
+        $(p).attr("id", "playerName");
+        var pic = $("<img>");
+        $(pic).attr("src", "assets/images/spaceJam/" + i + ".png");
+        $(pic).attr("id", "playerPic");
+        $(pic).css("width", "350px");
+        $(pic).css("height", "250px");
+
+        $(newRow).append(pic);
+        $(newRow).append(p);
+        $(newRow).attr("id", "player");
+        $(newRow).css("float", "left");
+        $(newRow).css("margin", "0 20px 20px 0");
+        $(newRow).attr("class", "carousel-item");
+
+        $("#players").append(newRow); 
+        $('.carousel').carousel();     
+    }
+}
+
+
+$(document).on("click", "#spaceJam", spaceJam);
 
 $(document).on("click", "#submit", search);
 });
